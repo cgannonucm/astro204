@@ -1,0 +1,56 @@
+\documentclass{article}
+% Template borrowed from https://latex-tutorial.com/tutorials/first-document/
+\title{Problem Set 1}
+\date{October 10th 2024}
+\author{Charles Gannon}
+\begin{document}
+  \pagenumbering{gobble}
+  \maketitle
+  \pagenumbering{arabic}
+  (a) The gravitational acceleration enacted on our test object is
+  \begin{equation}
+      \vec{a} = -\frac{G M}{r^2}\hat{r}, 
+  \end{equation}
+  where G is the gravitational constant, M is the mass of the deflector, $r$ is the separation between the particles and $\hat{r}$ is unit vector pointing towards the point mass from the deflector.
+  Using the impulse approximation 
+  \begin{equation}\label{impulse}
+    \Delta v = a \Delta t, 
+  \end{equation}
+  where $\Delta v$ is the change in velocity, $a$ is the acceleration at closest approach and $\Delta t$ is the relevant timescale near the deflector.
+  Assuming that minimal deflection, the distance between the deflector and the point mass will be $\sim b$, and assuming we change the velocity of order $v_{rel} $  we can plug into eq. \ref{impulse} to get 
+  \begin{equation}
+      v_{rel} = \frac{G M}{b^2} \Delta t ,
+  \end{equation}
+  Since for our situation the relavent timescale is 
+  \begin{equation}
+      \Delta t \sim \frac{2b}{v_{rel}},
+  \end{equation}
+  we have 
+  \begin{equation}
+      b = 2 \frac{G M}{v_{rel}^2},
+  \end{equation}
+  Finally, we can substitute 
+  \begin{equation}
+      v_{esc} = \left( \frac{2 G M}{R} \right) ^ 2
+  \end{equation}
+  to get 
+  \begin{equation}
+      b = R \left( \frac{v_{esc}}{v_{rel}} \right)^2
+  \end{equation} 
+
+  (b) Conservation of energy gives 
+  \begin{equation}
+      (1/2) m v_{rel}^2 = (1/2) m v_{surf}^2 - \frac{G M m}{R},
+  \end{equation}
+  Where $v_{surf}$ is the velocity of the particle at the surface.
+  Conservation of angular momentum gives 
+  \begin{equation}
+    v_{rel} b = v_{surf} R
+  \end{equation}
+  Combining these two equations we have 
+  \begin{equation}
+      b = \sqrt{1 + \frac{2 G M}{R v_rel^2}}R = \sqrt{1 + \left( \frac{v_{esc}}{ v_{rel}} \right)^2 R}
+  \end{equation}
+  (c) See jupyter notebook
+  
+\end{document}
