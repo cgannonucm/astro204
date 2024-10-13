@@ -1,0 +1,123 @@
+\documentclass{article}
+% Template borrowed from https://latex-tutorial.com/tutorials/first-document/
+\title{Problem Set 2}
+\date{October 10th 2024}
+\author{Charles Gannon}
+\begin{document}
+  \pagenumbering{gobble}
+  \maketitle
+  \pagenumbering{arabic}
+  \begin{enumerate}
+    \item Hydrostatic atmospheres
+    \begin{enumerate}
+        \item 
+            To calculate the scale height of an atmosphere with pressure
+            \begin{equation}
+                \frac{dP}{dz} =  P_0 e^{-z / H},
+            \end{equation}
+            we first calculate
+            \begin{equation}
+                \frac{dP}{dz} =  - \frac{P_0}{H} \cdot e^{-z / H}
+            \end{equation}
+            then take the ratio
+            \begin{equation}
+                P(z) / \left| dP(z)/dz \right| = H
+            \end{equation}
+        \item
+            The hydrostatic balance equation is
+            \begin{equation}\label{eq_hydro_balance}
+                \frac{1}{\rho} \frac{dP}{dr} = -G \frac{M}{r^2}.
+            \end{equation}
+            The density, $\rho$ can be expressed in terms of pressure
+            \begin{equation}
+                P = \rho c_s^2,
+            \end{equation}
+            assuming an ideal gas.
+            Furthermore, for the isothermal case, $c_s$ is constant with respect to radius.
+            Recasting eq. \ref{eq_hydro_balance} in a more easily integrable form gives 
+            \begin{equation}
+                \frac{1}{\rho} \frac{dP}{dr} = -\frac{G M}{c_s^2} \frac{1}{r^2} = \frac{1}{H_0} \left( \frac{R_0}{r} \right)^2
+            \end{equation}
+            which can be integrated to give
+            \begin{equation}
+                P = A e^{\frac{R_0^2}{H_0} \frac{1}{r}}.
+            \end{equation}
+            Imposing the condition $P(R) = P_0$ gives 
+            \begin{equation}\label{eq_pshere}
+                P = P_0 \exp \left[ {\left ( \frac{R}{H_0} \right ) \left( \frac{R}{r} - 1\right)} \right] 
+            \end{equation}
+        \item
+            Rewriting the exponent in eq. \ref{eq_pshere} in terms of z = r - R gives
+            \begin{equation}
+                - \frac{R}{H_0} \left [ z/R (1 + z/R)^{-1} \right ], 
+            \end{equation}
+            which we can Taylor expand for $z << R$
+            \begin{equation} 
+                z/R (1 + z/R)^{-1} \sim z/R (1 - z/R) \sim z/R,
+            \end{equation}
+            which can be substituted into eq. \ref{eq_pshere} to give  
+            \begin{equation}
+                P = P_0 \exp \left[ - z / H_0  \right] \approx P_0 exp \left[ -z / R \right],
+            \end{equation}
+            which is identical to the plane parallel case.        
+        \item 
+            \begin{equation}
+                \lim_{t \rightarrow \infty} P = P_0 \exp \left[ - R / H_0 \right] \neq 0
+            \end{equation} 
+    \end{enumerate}
+    \item Optical depth and scale lengths (see jupyter notebook)
+    \item The Lyman-$\alpha$ forest.
+        For a cloud to a part of the forest, the optical depth, $\tau$ must be $\tau \approx 1$.
+        The optical depth of a Lyman $\alpha$ cloud is 
+        \begin{equation}
+            \tau = N_{HI} \sigma_0.
+        \end{equation}
+        Therefore, for the cloud to be in the forest
+        \begin{equation}
+            N_{HI} = 1 / \sigma_0, 
+        \end{equation}
+
+        From the notes, the cross-section of Lyman-$\alpha$ absorption is 
+        \begin{equation}
+            \sigma_0 = \frac{1}{8 \pi} \frac{g_1}{g_2} \frac{A_{21}}{\Delta v} \Lambda^2
+        \end{equation}
+        for an order of magnitude estimate assume states have equal weighting so $g_1 \approx g_2$, therefore
+        \begin{equation}
+            \sigma_0 \approx \frac{A_{21}}{\Delta v} \Lambda^2
+        \end{equation}
+        The speed of sound is $c_s \approx \sqrt{\frac{k T}{\nu}} \approx 10^6 cm / s$
+        Plugging in $\Lambda \approx 1.2 \cdot 10^{-5} cm$, $\delta_v \approx c_s / \Lambda_0 \approx 10^{11} 1/s$ the crosssection is $\sigma_0 \approx 10^{-12} cm^{2}$. 
+        This gives a required column density of $N_{HI} \approx 10^{12}$ cm$^{-2}$.
+    \item Rate coefficients for chemical reactions. 
+        To estimate the boor radius, take the angular momentum as the quantized quantity 
+        \begin{equation}
+            \hbar = m_e a_0 v_c
+        \end{equation}
+        where the orbital velocity, $v_c$ can be estimated from uniform circular motion,
+        \begin{equation}
+            k \frac{e^2}{a_0^2} = m_e v_c^2 / a_0.
+        \end{equation}
+        Solving for $a_0$ gives 
+        \begin{equation}
+            a = \frac{\hbar^2}{k e^2 m_e} \approx \sim 1\cdot 10^{-8} [cm]
+        \end{equation}
+        The number of collisions occurring per time is
+        \begin{equation}
+            n = \sigma v n_1 n_2,
+        \end{equation}
+        therefore 
+        \begin{equation}
+            k = v \sigma,
+        \end{equation} 
+        where v is the thermal velocity
+        \begin{equation}
+            1/2 m v^2 = 3/2 k_b T,
+        \end{equation}
+        and $\sigma$ is the cross-section of hydrogen
+        \begin{equation}
+            \sigma \sim \pi a_0^2,
+        \end{equation}
+        which can approximated using our estimate for the Bohr radius, which gives an approximate cross-section of $\sigma \approx 3 \cdot 10^{-16}$ cm$^2$. 
+        The thermal velocity for the $10^4$ K gas is $v \approx  1 \cdot 10^-6$ cm/s which gives a final estimate for $k$ as $k \approx 10^{-10} cm^3 / s$ which is close to the $q_{21}$ value provided.  
+  \end{enumerate} 
+\end{document}
