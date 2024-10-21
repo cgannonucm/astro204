@@ -10,6 +10,7 @@ def laneemden(xi, coords, n):
     # After make the substitution u = e^2 \frac{d\theta}{d\xi} the Lane-Emden equations become
     # \frac{du}{d\xi} = - \xi^2 \theta^n
     # \frac{d\theta}{d\xi} = u / \xi^2
+    # Add small epsilon to xi to avoid divide by 0 error for xi = 0
     return (u / (xi + 0.00001)**2, -xi**2 * t**n)
 
 def main():
