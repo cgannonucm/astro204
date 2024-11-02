@@ -1,0 +1,146 @@
+% Created 2024-11-02 Sat 01:14
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{breqn}
+\author{Charles Gannon}
+\date{\today}
+\title{Astro 204 Problem Set 4}
+\hypersetup{
+ pdfauthor={Charles Gannon},
+ pdftitle={Astro 204 Problem Set 4},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 29.4 (Org mode 9.8)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Numerical Time-Evolution to a Parker Wind}
+\label{sec:orgea8080f}
+(a) The mass conservation equation
+\begin{equation}
+ \frac{\partial \rho}{\partial t} + \vec{\nabla} \cdot (\rho \vec{v}) = 0,
+\end{equation}
+simplifies to
+\begin{equation}
+ \frac{\partial \rho}{\partial t} + \frac{1}{r^2}\left(  r^2 \rho v \right )  = 0,
+\end{equation}
+under the assumption of spherical symmetry, which can be expanded to
+\begin{equation}
+ \frac{\partial \rho}{\partial t} + \frac{2}{r} \rho v + v \frac{\partial \rho}{\partial r} + \partial \frac{\partial v}{\partial r}  = 0,
+\end{equation}
+using the chain rule.
+The momentum conservation equation is
+\begin{equation}
+ \rho \frac{d \vec{v}}{dt} = - \vec{\nabla} P + \rho \vec{f}
+\end{equation}
+which can be expanded by applying the chain rule
+\begin{equation}
+ \frac{d \vec{v}}{d t} = \left( \frac{\partial v}{\partial t} + v \frac{\partial  v}{\partial r} \right ) \hat{r} ,
+\end{equation}
+Additionally upon substituting the isothermal equation of state \(P = c_s^2 \rho\) the gradient of pressure becomes
+\begin{equation}
+ \vec{\nabla} P = c_s^2 \frac{\partial \rho}{\partial r} \hat{r}.
+\end{equation}
+Combining everything, we get
+\begin{equation}
+ \rho \frac{\partial v}{\partial t} + \rho v \frac{\partial v}{\partial r} = -c_s^2 \frac{\partial \rho}{\partial r} - \rho \frac{G M}{r^2}
+\end{equation}
+(b) Upon substitution of \(x = ln r\) the equation (1) becomes
+\begin{equation}
+ \frac{\partial \rho}{\partial t} + e^{-2x} \frac{d }{dx}(e^{2x}\rho v) = 0
+\end{equation}
+and equation 2 becomes
+\begin{equation}
+ e^{x} \left ( e^{x} \rho \frac{\partial v}{\partial t} + \rho v \frac{\partial v}{\partial x} + c_s^2 \frac{\partial \rho}{\partial x} \right ) =  - GM \rho.
+\end{equation}
+(c) See jupyter notebook
+\section{Wave Breaking in the Upper Atmosphere}
+\label{sec:org2801f4b}
+(a) For our, the mass conservation equation is
+\begin{equation}
+ \frac{\partial \rho}{\partial t} + \vec{\nabla} \cdot (\rho \vec{v}) = 0
+\end{equation}
+and momentum conservation is
+\begin{equation}
+ \rho \frac{d \vec{v}}{dt} = - \vec{\nabla} P + g \rho \hat{z},
+\end{equation}
+if we take the near surface limit for the gravitational force.
+Now, we add perturbations \(P_1\), \(\rho_1\), \(v_1\) to a set of know solutions, \(P_0\), \(\rho_0\) and \(v_0\), like the derivation in class, I choose \(v_0 = 0\).
+First, I calculate the scale height of the atmosphere.
+Under the assumption \(v_0 = 0\)
+\begin{equation}
+ \vec{\nabla} P_1 = \frac{d P_1}{d \rho _1} \vec{\nabla} \rho_1 =g \rho_1 \hat{z},
+\end{equation}
+which upon substituting \(a_0^2 = \frac{d P}{d \rho}\) and expanding \(\vec{\nabla} \rho\) the equation becomes
+\begin{equation}
+  a_0^2 \frac{\partial \rho_1}{\partial z} \hat{z} = g \rho_1 \hat{z},
+\end{equation}
+which gives a scale height
+\begin{equation}
+  H = \rho / \left | \frac{\partial \rho_1}{\partial z} \right | = \frac{a_0^2}{g}.
+\end{equation}
+Applying perturbation theory to the first equation, gives the same result as for the case without considering gravity (the solution we derived in class)
+\begin{equation}
+ \frac{\partial \rho_1}{\partial t} + \rho_0 \vec{ \nabla } \cdot \vec{v}_1 = 0.
+\end{equation}
+Applying perturbation theory to the second equation we and applying similar arguments as were applied in class get
+\begin{equation}
+ \rho_0 \frac{d \vec{v}}{dt} = -a_0^2 \vec{\nabla} \rho_1 - g \rho_1 \hat{z}
+\end{equation}
+Combining the energy and momentum equation into the wave equation, we get
+\begin{equation}
+ \frac{\partial^2 \rho_1}{\partial t^2}
+ - a_0^2 \nabla^2 \rho_1
+ - \frac{\partial \rho_1}{\partial z}
+ = 0.
+\end{equation}
+Assuming the solution
+\begin{equation}
+ \rho = \delta \rho e^{i (\vec{k} \cdot \vec{x} - \omega t)}
+\end{equation}
+and plugging we get
+\begin{equation}
+ - \omega^2 + a_0^2 k^2 - i g k_z = 0
+\end{equation}
+which for a wave traveling in the z direction becomes
+\begin{equation}
+ \omega^2 = a_0^2 \left (k^2 - i \frac{k}{H} \right )
+\end{equation}
+after substituting \(H = a_0^2 / g\)
+(b) Rearranging for \(k\), we have
+\begin{equation}
+ k^2 - \frac{i k}{H} - \frac{\omega^2}{a_0^2} = 0,
+\end{equation}
+solving using the quadratic equation we get
+\begin{equation}
+ k = \frac{i}{2H} \pm \sqrt{-\frac{1}{(2H)^2} + \frac{\omega^2}{a_0^2}}.
+\end{equation}
+Plugging into our assumed solution, we get
+\begin{equation}
+ \rho_1 = \delta \rho e^{-z/(2H)} e^{\text{Imaginary Part}}
+\end{equation}
+the fractional amplitude is
+\begin{equation}
+ \frac{\Delta \rho}{\rho_0} = \frac{\delta}{\rho_0} e^{-z / (2H)}
+\end{equation}
+however the background density decreases with height as \(\rho \propto e^{-z/H}\) so the fractional amplitude is proportional to
+\begin{equation}
+ \frac{\Delta \rho}{\rho_0} \propto \frac{\Delta \rho}{\rho_0} e^{-z / (2H)} e^{z/H} = e^{z/(2H)}
+\end{equation}
+so the fractional density amplitude increases with height.
+\end{document}
