@@ -1,0 +1,114 @@
+#+title: Astro 204 Problem Set 4
+#+author: Charles Gannon
+#+email:  cgannon@ucmerced.edu
+#+date:   \today
+#+startup: latexpreview
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \usepackage{breqn}
+
+* The main sequence
+(a) The star is in equilibrium so the virial theorem applies, the kinetic energy should be approximatly equal to the potential energy,
+$U = 1/2 K$.
+Under the influence of gravity, the potential energy of a star is
+\begin{equation}
+ U = \frac{G M^2}{R},
+\end{equation}
+while the kinetic energy of the star is given by
+\begin{equation}
+ K = \frac{3}{2} k_b T
+\end{equation}
+combining these equations and dropping factor unity coefficients we have
+\begin{equation}
+ T \sim \frac{G M \mu}{kr}
+\end{equation}
+(b) The luminosity from the core is proportional to $T^4$
+\begin{equation}
+ L_{\text{core}} = 4 \pi R^2 \sigma_b T^4
+\end{equation}
+The number of step taken for a photon to diffuse to the surface
+\begin{equation}
+ n = \left ( \frac{r}{\lambda} \right )^2,
+\end{equation}
+if the photons were able to take a straight path the number of steps would be
+\begin{equation}
+ n = \frac{r}{\lambda},
+\end{equation}
+therefore the number of photons absorbed is reduced by $\lambda / r$.
+Putting it all together
+\begin{equation}
+  L \sim 4 \pi R^2 \sigma_b T^4 \left( \lambda / r \right)
+\end{equation}
+(c) The mean free path is
+\begin{equation}
+ \lambda = 1 / (n \sigma_t).
+\end{equation}
+For the start, where the number density of ions is
+\begin{equation}
+ n = \rho / u = \frac{M}{4/3 \pi R^2 \mu}
+\end{equation}
+therefore,
+\begin{equation}
+ \lambda \sim 4 R^3 \mu / (M \sigma_T).
+\end{equation}
+(d) The only terms that depend on mass in the luminosity expression are $T \sim M$ and $\lambda \sim M^{-1}$ therefore,
+\begin{equation}
+ L \sim T^4 \lambda \sim M^{3}
+\end{equation}
+(e) We are calculating what the luminosity of the start that is necessary to remain in hydrostatic equilibrium.
+Even if we don't know the physics that is causing the start to be supported (nuclear fusion), we know that is supported, and can therefore infer the luminosity of this process.
+* Scale Height of a Disk
+(a) The disk is supported by pressure in the z direction
+\begin{equation}\label{eq_hse}
+ \frac{1}{\rho} \frac{dP}{dz} = -\frac{G M}{r^2} \sin (\theta) = -\frac{G M}{r^3} z = - \Omega^2 z.
+\end{equation}
+Plugging in $P = c_s^2 \rho$ and integrating we get
+\begin{equation}
+ c_s^2 \ln \rho = - \frac{1}{2} \Omega^2 z^2 + C,
+\end{equation}
+where C is the constant of integration.
+Solving for density gives a gaussian
+\begin{equation}
+ \rho(z) = \rho_0 \text{exp} \left[- \frac{z^2 \Omega^2}{2 c_s^2}   \right] =  \rho_0 \text{exp} \left[- \frac{z^2}{2 H^2}   \right],
+\end{equation}
+with a standard deviation $\sigma = 1/H$.
+(b) In terms of order of magnitude Eq. \ref{eq_hse} becomes
+\begin{equation}
+ c_s^2 \frac{1}{\rho} \frac{\rho}{H} = - \Omega^2 H,
+\end{equation}
+where H is the scale height of the disk.
+Therefore an order of magnitude estimate for the scale height is
+\begin{equation}
+ H = \frac{c_s}{\Omega},
+\end{equation}
+which is the one over the standard deviation of the gaussian we found from evaluating the integrals directly (so our OOM does pretty well).
+\newline (c) For a thin disk
+\begin{equation}
+  \frac{c_s}{r \Omega} = \frac{H}{r} << 1,
+\end{equation}
+therefore,
+\begin{equation}
+  T << (r \Omega)^2 \left( \frac{\mu}{k} \right)
+\end{equation}
+For the earth's orbit $\Omega \sim 1\text{yr}^{-1}$, $r=1\text{AU}$, and assuming molecular hydrogen for which $\mu \sim 2 m_h$ I get
+\begin{equation}
+ T = \left[ (1.5 \cdot 10^{13} \text{cm}) (2 \cdot 10^{-7} s^{-1}) \right]^2 \left( \frac{1.6 \cdot 10^-24 g}{1.4 \cdot 10^{-16} cm^2 g s^{-2} K^{-1}} \right)  \sim 10^5 K
+\end{equation}
+* Disk accretion due to molecular viscosity
+We can use expressions for the diffusion coefficient
+\begin{equation}
+ \nu = r^2 / t = \lambda_{\text{mfp}} v_{\text{th}}
+\end{equation}
+to estimate the accretion time scale for a protoplanetary disk.
+We know $r \sim 1 \text{AU}$, we can estimate the mean free path
+\begin{equation}
+ \lambda_{mfp} = 1/\left(n \sigma  \right)
+\end{equation}
+using $n = \Sigma/\left(2 H \mu \right)$, and $\sigma \sim 1 \dot{A}$.
+The height can be estimated using results from the previous problem, $H \sim c_s / \Omega$.
+Finally, the thermal velocity can be estimated using the thermal velocity, $v_{th} \sim c_s$.
+At room temperature (300K), and using $\mu = 2 m_p$ I get a disk height $H \sim 8 * 10^{11} cm$, a number density $8 \cdot 10^{14} cm^{-3}$, a mean free path of $\lambda_{\text{mfp}}=13 \text{cm}$.
+Plugging everything in, the timescale becomes
+\begin{equation}
+ t = \frac{r^2}{\nu} = (1.5 \cdot 10^{13} cm)^2 / (2 \cdot 10^6) \sim 1 \cdot 10^{20} s \sim  3.5 \cdot 10^{12} yr
+\end{equation}
+which is comparable to the age of the universe (so this probably doesn't account for accretion).
