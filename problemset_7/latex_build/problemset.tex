@@ -1,0 +1,227 @@
+% Created 2024-11-24 Sun 20:22
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{breqn}
+\author{Charles Gannon}
+\date{\today}
+\title{Astro 204 Problemset 7}
+\hypersetup{
+ pdfauthor={Charles Gannon},
+ pdftitle={Astro 204 Problemset 7},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 29.4 (Org mode 9.8)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Effective Viscosity}
+\label{sec:org67aae07}
+(a) The viscosity for a fluid is
+\begin{equation}
+ \nu = v_{cs} \lambda_{\text{mfp}}.
+\end{equation}
+We can extend this to our effective fluid, assigning an effective speed of sound \(v_{\text{eddy}}\) and mean free path \(L_{\text{eddy}}\).
+The effective speed of sound cannot exceed the actual speed of sound in the fluid, therefore
+\begin{equation}
+ v_{eddy} < c_s.
+\end{equation}
+Additionally, the eddy must be physically contained within the disk, so the length scale associated with each eddy, \(L_{\text{eddy}}\) must be less than the scale height of the disk
+\begin{equation}
+ L_{\text{eddy}} < H.
+\end{equation}
+Combining these two observations, we can write the effective viscosity as
+\begin{equation}
+ \nu = \alpha c_s H,
+\end{equation}
+with \(\alpha < 1\) parameterizing our ignorance of the underlying physics.
+\newline
+(b) The energy per wavenumber is \(k E_k (k) \sim k^{-2/3}\).
+This energy should be proportional to the kinetic energy so \(k^{-2/3} \sim \frac{1}{2} m v^2\), so \(v \sim k^{-1/3}\).
+The effective viscosity is proportional to the velocity and the length of the scale so
+\begin{equation}
+ \nu = v_{\text{eddy}} L_{\text{eddy}} \sim k^{-1/3} / k = k^{-4/3} \sim l^{4/3}
+\end{equation}
+so larger length scales contribute more to the velocity.
+\newline
+(c) Plugging in gives a viscosity
+\begin{equation}
+ \nu = \alpha c_s H = (10^{-2}) (2 \cdot 10^{6} cm/s) (8 \cdot 10^{11} m) \sim 10^{15} cm^2 / s.
+\end{equation}
+At \(r=1AU\) This corresponds to a timescale of
+\begin{equation}
+ t = r^2 / \nu = \left(1.5 \cdot 10^{13} cm \right)^2 / \left( 10^{15} cm^2/s  \right) \sim 10^{11} s \sim 10^{3} y
+\end{equation}
+which is much more reasonable.
+\section{Temperature of an accretion disk}
+\label{sec:org181564b}
+(a) A generic form of the energy equation for fluids is
+\begin{equation}
+ \rho T \frac{ds}{dt} = \psi - \lambda,
+\end{equation}
+integrating over z gives
+\begin{equation}
+ \Sigma T \frac{ds}{ds} = 2 H \psi - 2 H \lambda = Q_+ - Q_-.
+\end{equation}
+We can convert the total derivative to a partial derivative
+\begin{equation}
+ \frac{d}{dt} = \frac{\partial }{\partial t} + \vec{v} \cdot \vec{\nabla}.
+\end{equation}
+Noting that in steady state \(\frac{\partial }{\partial t} = 0\) and that under the assumption of disk symmetry we have \(\vec{v} \cdot \vec{\nabla} = v_r \frac{d}{dr}\) we have
+\begin{equation}
+ \Sigma v_r T \frac{ds}{dr} = Q_+ - Q_- .
+\end{equation}
+\newline
+(b) Since we can expect orbits to be circular because of damping, the total gravitational energy of the system is proportional to the mass squared
+\begin{equation}
+ E \sim -\frac{G M^2}{r}.
+\end{equation}
+Taking the derivative gives
+\begin{equation}
+ \dot{E} \sim -\frac{G M \dot{M}}{r}.
+\end{equation}
+The area of the orbit is proportional to \(r^2\), therefore
+\begin{equation}
+ Q_+ \propto r^2,
+\end{equation}
+therefore
+\begin{equation}
+ Q_+ \sim \frac{G M \dot{M}}{r^3}.
+\end{equation}
+Plugging in the expression from Kepler's 3rd law \(GM = \Omega^2 r^3\) I get
+\begin{equation}
+ Q_+ \sim \Omega^2 M
+\end{equation}
+\newline
+(d) From thermodynamics \(Tds = d \epsilon - \frac{P}{\rho^2}d\rho\), where \(\epsilon  = \frac{1}{\gamma - 1} c_s^2\).
+Converting to 2d, and plugging in a polytropic equation of state gives
+\begin{equation}
+ Tds = \frac{1}{\gamma - 1} c_s^2 - c_s^2 \frac{d \Sigma}{\Sigma}
+\end{equation}
+Therefore we have
+\begin{equation}
+ \Sigma v_r T \frac{ds}{dr} = \frac{1}{\gamma - 1} \Sigma \frac{d c_s^2}{dr} - c_s^2 v_r \frac{d \Sigma}{dr}.
+\end{equation}
+Both terms are order of magnitude \(\frac{\Sigma v_r c_s^2}{r}\), and multiplying by r on the top and bottom we get and noting \(r \Sigma v_r \sim \dot{M}\)
+\begin{equation}
+ \frac{r \Sigma v_r c_s^2}{r^2} \sim \frac{\dot{M} c_s^2}{r^2}.
+\end{equation}
+From part b, we have  \(Q_+ \sim \frac{\dot{M}v_k^2}{r^2}\) .
+For a thin disk, \(c_s << v_k\), therefore
+\begin{equation}
+ \Sigma v_r T \frac{ds}{dr} << Q_+.
+\end{equation}
+(e) The total amount of radiative cooling is equal to the total lumnosity output.
+Therefore, the total luminosity is
+\begin{equation}
+ L = \int_{R_*}^\infty 2 \pi r Q_- dr \sim \frac{G M \dot{M}}{2 R_*}.
+\end{equation}
+\newline
+(e) We can relate the total temperature of the disk to the radiative cooling
+\begin{equation}
+ Q_- = 2 \sigma_{sb} T^4.
+\end{equation}
+Since we have \(Q_- \sim Q_+\), the temperature as a function of radius is
+\begin{equation}
+ T^4 = \frac{3 G M \dot{M}}{8 \pi \sigma_{sb} r^3} = \frac{3 \Omega^2 \dot{M}}{8 \pi \sigma_{sb}}.
+\end{equation}
+Plugging in \(\dot{M} = 10^{-8} M_\odot / yr\) at 1 AU (the earth's orbit, so
+\(\Omega = 1yr^{-1}\)), I get \(T = 52.6 K\) so heating wins.
+(f) If the photons went straight, it would take them \(t = H/c\) to diffuse out of the disk.
+However, they diffuse so the time to diffuse is \(\left(H / \Lambda_{\text{mfp}} \right)^2 / c\) to diffuse out of the disk.
+The optical depth of the disk is
+\begin{equation}
+ \tau = n \sigma H = H / \lambda_{\text{mfp}},
+\end{equation}
+therefore, the Luminosity is a factor of \(\tau\) larger than the Luminosity at the surface.
+Since \(L \sim \sigma_{\text{sb}} T^4\), the relationship between the temperature at the surface and the midplane is
+\begin{equation}
+ T_m \sim T_s \tau^{1/4}
+\end{equation}
+\section{Time evolution of an accretion disk}
+\label{sec:orgc5ded80}
+(a) The mass equations is
+\begin{equation}
+ \frac{\partial \rho}{\partial t} + \vec{\nabla} \cdot (\rho \vec{v}) = 0,
+\end{equation}
+integrating over z and imposing symmetry gives
+\begin{equation}
+ \frac{\partial \Sigma}{\partial t} + \frac{1}{r} (r \Sigma v_r) = 0
+\end{equation}
+The momentum equation is
+\begin{equation}
+ \rho \frac{d \vec{v}}{dt} = - \vec{\nabla} P + \rho \vec{f},
+\end{equation}
+we can rewrite the left hand side and drop terms, and  dropping terms with time dependence
+\begin{equation}
+ \rho \frac{d \vec{v}}{dt} = \rho (\vec{v} \cdot \vec{\nabla}) \vec{v}
+\end{equation}
+Plugging in the viscous force per mass, Keppler's law, dropping all other terms on the right and integrating over mass gives
+\begin{equation}
+ \Sigma v_r \frac{\partial }{\partial r} (r^2 \Omega) = \frac{1}{r^2}\frac{\partial }{\partial r} \left( \Sigma \nu r^3 \frac{\partial \Omega}{\partial r}  \right) .
+\end{equation}
+Keppler's 3rd law gives into the momentum equation and solving for \(v_r\) gives
+\begin{equation}
+ v_r = -3 \Sigma^{-1} r^{-1/2} \frac{\partial }{\partial r}(\Sigma \nu r^{1/2})
+\end{equation}
+which we can plug into the mass equation to get
+\begin{equation}
+ \frac{\partial \Sigma}{\partial t} = \frac{3}{r} \frac{\partial }{\partial r} \left[ r^{1/2} \frac{\partial }{\partial r} \left( \Sigma \nu r^{1/2} \right)  \right]
+\end{equation}
+\newline
+(b) Plugging in \(\gamma = 1\), \(R = \frac{r}{r_0}\), i\(T = \frac{t}{t_{visc}} + 1\) and \(C = \Sigma_0 e\) we get
+\begin{equation}
+ \Sigma = C R^{-1} T^{-3/2} e^{-R / T}.
+\end{equation}
+Plugging in our substitution variables \(T\) and \(R\) into the main equation we get
+\begin{equation}
+ \frac{\partial \Sigma}{\partial T} = \frac{1}{R} \frac{\partial }{\partial R} \left[ R^{1/2} \frac{\partial }{\partial R} \left( \Sigma \nu R^{1/2} \right)  \right].
+\end{equation}
+Now, we can plug everything in.
+The left hand side of the equation becomes
+\begin{equation}
+ C R^{-1} \left( -\frac{3}{2} T^{-5/2} e^{-R/T} + T^{-3/2} e^{-R/T} R T^{-2}  \right) =
+\end{equation}
+\begin{equation}
+ C R^{-1} T^{-3/2} e^{-R / T} \left( -\frac{3}{2} T^{-1} + RT^{-2}  \right) =
+\end{equation}
+\begin{equation}
+\Sigma \left( -\frac{3}{2} T^{-1} + RT^{-2}  \right)
+\end{equation}
+The right hand side becomes
+\begin{equation}
+\frac{1}{R} \frac{\partial }{\partial R} \left[ R^{1/2} \frac{\partial }{\partial R} \left( C T^{-3/2} R^{1/2} e^{-R/T} \nu R^{1/2} \right)  \right] =
+\end{equation}
+\begin{equation}
+ C T^{-3/2} \frac{1}{R} \frac{\partial }{\partial R} \left[  \frac{1}{2} e^{-R/T} - R T^{-1} e^{-R/T}  \right] =
+\end{equation}
+\begin{equation}
+ C T^{-3/2} \frac{1}{R} \frac{\partial }{\partial R} \left[ e^{-R/T}\left( \frac{1}{2} - R T^{-1} \right)  \right] =
+\end{equation}
+\begin{equation}
+ C T^{-3/2} R^{-1} \left[ -T^{-1} e^{-R/T} \left( \frac{1}{2} - RT^{-1} \right) - T^{-1}e^{-R/T}  \right] =
+\end{equation}
+\begin{equation}
+ C T^{-3/2} R^{-1} e^{-R/T} \left( -\frac{3}{2} T^{-1} + RT^{-2} \right) =
+\end{equation}
+\begin{equation}
+ \Sigma \left( -\frac{3}{2} T^{-1} + RT^{-2} \right) .
+\end{equation}
+Both sides match which means our solution is valid.
+\newline
+(c) See jupyter notebook
+\end{document}
