@@ -1,0 +1,59 @@
+#+title: Astro 204 Problem Set 8
+#+author: Charles Gannon
+#+email:  cgannon@ucmerced.edu
+#+date:   \today
+#+startup: latexpreview
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \usepackage{breqn}
+
+
+* Turkey (or tofurkey)
+Since heating a turkey is a diffusive process, the number of diffusive steps required to heat the turkey is
+\begin{equation}
+ n = \left( \frac{r}{\lambda}  \right)^2,
+\end{equation}
+where r is the radius of the turkey and $\lambda$ is the mean free path between atoms in the turkey.
+Each diffusive step takes time
+\begin{equation}
+ t_{\text{step}} = \frac{\lambda}{v_{th}}
+\end{equation}
+where $v_{th}$ is the thermal velocity of phonons in the turkey.
+Therefore, the time to cook the turkey is
+\begin{equation}
+ t = \frac{r^2}{\lambda v_{th}}.
+\end{equation}
+The thermal velocity of the phonons can be estimated using the spring model mentioned in the hint.
+The effective spring constant
+\begin{equation}
+ k_{\text{spr}} = 2 \frac{U_{\text{spr}}}{\lambda^2}
+\end{equation}
+can be estimated by assuming the energy of the oscillator is $U_{\text{spr}} \sim 1 ~\text{eV}$ (this is reasonable choice for the energy of a chemical system.)
+The thermal velocity of the phonons can be estimated using the phonons can be estimated by using the spring model given in the hint.
+The spring constant can be related to the energy of the oscillator
+\begin{equation}
+  k_{\text{sp}} = 2 \frac{U_{\text{sp}}}{\lambda^2},
+\end{equation}
+where $U_{\text{sp}} \sim 1 ~ \text{eV}$ is a good order of magnitude estimate for a chemical system.
+The thermal velocity
+\begin{equation}
+ v_{th} \sim \lambda \omega
+\end{equation}
+can then be estimated using the frequency of the oscillator
+\begin{equation}
+ \omega = \sqrt{\frac{k_{\text{sp}}}{m}}.
+\end{equation}
+Assuming the turkey is made almost entirely out of water $m = 18 m_{p}$, and the lattice spacing is $r_{\text{lattice}} \sim 2 \dot{A}$ and multiply by a factor of a few (3) to estimate the mean free path $\lambda \sim 5 \dot{A}$.
+I get an effective spring constant
+\begin{equation}
+  k_{\text{sp}} = 2 \frac{1.6 \cdot 10^{-12} ~ \text{erg}}{\left (5 \cdot 10^{-8} ~ \text{cm} \right )^2 } = 1280 ~ \text{erg} ~\text{cm}^{-2},
+\end{equation}
+and a thermal velocity
+\begin{equation}
+ v \sim \left( 5 \cdot 10^{-8} \text{cm} \right ) \sqrt{\frac{1280 ~ \text{erg} ~\text{cm}^{-2}}{18 \cdot 1.6 \cdot 10^{-24} \text{g}}} \sim 3 ~\text{km} ~\text{s}^{-1}.
+\end{equation}
+Plugging everything in, and assuming a turkey 10 cm in radius, I get a total time to cook the turkey
+\begin{equation}
+ t = \frac{\left( 10 \text{cm}  \right)^2 }{\left( 5 \cdot 10^{-8} \text{cm} \right)^2 \left( 3 \cdot 10^5 ~\text{cm} ~\text{s}^{-1}  \right)  } \sim 6 \cdot 10^3 \text{s} \sim 1.7 \text{hr}
+\end{equation}
+equal to about an hour and a half.
+So pretty close, but maybe a bit on the short end, very good for an order of magnitude estimate!
