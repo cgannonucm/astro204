@@ -1,0 +1,119 @@
+% Created 2024-12-09 Mon 14:21
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{breqn}
+\author{Charles Gannon}
+\date{\today}
+\title{Astro 204 Problemset 9}
+\hypersetup{
+ pdfauthor={Charles Gannon},
+ pdftitle={Astro 204 Problemset 9},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 29.4 (Org mode 9.8)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{The Dynamical Time}
+\label{sec:orgf3da453}
+(a) Using the form of Kepler's 3'rd law
+\begin{equation}
+ G M = \Omega^2 a^3,
+\end{equation}
+the period is equal to
+\begin{equation}
+ P = \frac{2 \pi}{\Omega} = 2 \pi \sqrt{\frac{a^3}{GM}}.
+\end{equation}
+The free fall time is just half the orbital time
+\begin{equation}
+ t_{ff} = \frac{P}{2} =  \pi \sqrt{ \frac{a^3}{GM} }.
+\end{equation}
+
+(b) For a circular orbit
+\begin{equation}
+ \frac{G M }{r^2} = \frac{v_{\text{circ}}^2}{r}
+\end{equation}
+therefore,
+\begin{equation}
+ v_{\text{circ}} = \sqrt{\frac{GM}{r}}
+\end{equation}
+Using Kepler's third law,
+\begin{equation}
+  v_{\text{circ}} = \Omega r
+\end{equation}
+or equivalently
+\begin{equation}
+ \Omega_{\text{circ}} = \frac{v_{\text{circ}}}{r},
+\end{equation}
+which gives an equivalent orbital period of
+\begin{equation}
+ P_{\text{circ}} = 2 \pi \sqrt{\frac{r^3}{G M}}.
+\end{equation}
+
+
+(c) See python file / plots directory. The orbital period is 1 year.
+
+
+
+(d) See python file / plots directory. The orbital period is about 1/2 a year (looking at the plots).
+
+
+
+(e) The Escape velocity can be quickly found by setting the kinetic energy equal to the gravitational potential energy
+\begin{equation}
+ \frac{1}{2} m v_{\text{esc}}^2 = \frac{G M m}{r},
+\end{equation}
+which gives an escape velocity
+\begin{equation}
+ v_{\text{esc}} = \sqrt{\frac{2 G M}{r}}.
+\end{equation}
+At constant velocity, the time it takes to travel distance r  is
+\begin{equation}
+ t_{\text{esc}} = \frac{r}{v_{\text{esc}}} = \sqrt{\frac{r^3}{2 G M}}.
+\end{equation}
+
+
+(f) See python file / plots directory. The orbit gets larger with increasing velocity, up to about 4 times longer at \(v_0 = 1.4 v_{circ}\).
+
+
+(g) This is the time scale gravitation works on.
+The free-fall time, collapse time of a cloud, orbital time are all within a factor of unity.
+
+(h) Substituting \(M = \frac{4}{3} \pi r^3\) into the free fall time I get
+\begin{equation}
+ t_{\text{collapse}} = \pi \sqrt{ \frac{3}{4 G \rho} } \sim \left(  G \rho \right)^{-1/2} .
+\end{equation}
+\section{Tidal Gravity}
+\label{sec:org78c7df3}
+The Swarzschild radius of black hole is
+\begin{equation}
+ r_s = \frac{2 G M_{bh}}{c^2}.
+\end{equation}
+Neglecting relativistic effects, and dropping order the Roche limit of the black hole is
+\begin{equation}
+ r_t \sim R_* \left( \frac{M_{bh}}{M_{*}}   \right)^{1/3},
+\end{equation}
+where \(M_{bh}\) is the mass of the black hole, \(M_*\) is the mass of the star and \(R_*\) is the radius of the star.L
+If the Roche limit is greater than the Swarzschild radius the star will be visibly tidally disrupted.
+On the other hand if \(r_t < r_s\) the star will be swallowed whole.
+Dropping order of unity coefficients, for the star to be swallowed whole,
+\begin{equation}
+ M_{bh} > \left ( \frac{R_* c^2}{G M^{1/3}} \right )^{3/2}.
+\end{equation}
+For a stellar mass star (\(M_* = M_\odot\) and \(R_* = 1 R_\odot\)) I get that the black hole must have mass \(M_{bh} > 3 \cdot 10^8\) to swallow the star whole.
+\end{document}
